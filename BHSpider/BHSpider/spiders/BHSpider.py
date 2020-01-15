@@ -30,14 +30,14 @@ class BHSpider(scrapy.Spider):
             # novel_item['novel_LatestUpdateTime'] =datetime.datetime.strptime(sel.xpath('//div[@class="new"]/span[1]/text()').extract()[0].split('：')[1].strip(),'%Y-%m-%d')
             novel_item['novel_LatestUpdateTime'] = sel.xpath('//div[@class="new"]/span[1]/text()').extract()[0].split('：')[1].strip()
             yield novel_item
-        # elif(re.match(r'(https?\:\/\/)?www\.baihexs\.com\/\d+/\d+/\d+\.html',response.url)):
-        #     chapter_item=ChapterItem()
-        #     chapter_item['novel_ID'] =response.url.split('/')[-2]
-        #     chapter_item['chapter_ID'] =response.url.split('/')[-1].split('.')[0]
-        #     chapter_item['chapter_Url'] =response.url
-        #     chapter_item['chapter_Title'] =sel.xpath('//h1/text()').extract()[0]
-        #     chapter_item['chapter_Content'] =''.join(sel.xpath('//div[@id="content"]').xpath('string(.)').extract()[0].split())
-        #     yield chapter_item
+        elif(re.match(r'(https?\:\/\/)?www\.baihexs\.com\/\d+/\d+/\d+\.html',response.url)):
+            chapter_item=ChapterItem()
+            chapter_item['novel_ID'] =response.url.split('/')[-2]
+            chapter_item['chapter_ID'] =response.url.split('/')[-1].split('.')[0]
+            chapter_item['chapter_Url'] =response.url
+            chapter_item['chapter_Title'] =sel.xpath('//h1/text()').extract()[0]
+            chapter_item['chapter_Content'] =''.join(sel.xpath('//div[@id="content"]').xpath('string(.)').extract()[0].split())
+            yield chapter_item
         else:
             pass
         all_urls = sel.xpath('//a/@href').extract()  # 提取界面所有的url
