@@ -107,10 +107,10 @@ ITEM_PIPELINES = {
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 db_configs={
-    'db_host' : '127.0.0.1',
-    'db_name': 'awesome' ,        #数据库名字，请修改
+    'db_host' : '10.60.2.175',
+    'db_name': 'novel' ,        #数据库名字，请修改
     'db_user' : 'root'      ,       #数据库账号，请修改
-    'db_password' : 'password'    ,     #数据库密码，请修改
+    'db_password' : '123456'    ,     #数据库密码，请修改
     'db_port' : 3306               #数据库端口，在dbhelper中使用
 }
 

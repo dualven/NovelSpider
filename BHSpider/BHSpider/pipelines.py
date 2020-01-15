@@ -61,7 +61,8 @@ class BhspiderPipeline(object):
     def process_item(self, item, spider):
         conn = mysql.connector.connect(user=settings.db_configs['db_user'],
                                        password=settings.db_configs['db_password'],
-                                       database=settings.db_configs['db_name'])
+                                       database=settings.db_configs['db_name'],
+                                       host='10.60.2.175',port=3306)
         cursor = conn.cursor()
         try:
             print('item=',item)
